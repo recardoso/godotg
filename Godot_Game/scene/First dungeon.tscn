@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv3vmjvcmwg1f"]
+
+[ext_resource type="Script" path="res://script/First dungeon.gd" id="1_ske2b"]
+
+[sub_resource type="TileSet" id="TileSet_bpue7"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+
+[node name="First dungeon" type="Node2D"]
+script = ExtResource("1_ske2b")
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+show_behind_parent = true
+tile_set = SubResource("TileSet_bpue7")
+cell_quadrant_size = 32
+format = 2
+layer_0/name = "1"
+layer_0/z_index = -2
+layer_1/name = "2"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "3"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()

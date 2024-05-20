@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://jq85mbhn3htr"]
+
+[ext_resource type="Texture2D" uid="uid://bg3go3mak7mc3" path="res://art/portal/portal-Sheet.png" id="1_etox0"]
+[ext_resource type="Script" path="res://script/portal.gd" id="1_h8qko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2da1"]
+atlas = ExtResource("1_etox0")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5yip"]
+atlas = ExtResource("1_etox0")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gf77x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2da1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5yip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6q0c6"]
+radius = 3.0
+
+[node name="portal" type="Node2D"]
+script = ExtResource("1_h8qko")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gf77x")
+
+[node name="portal_area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal_area"]
+shape = SubResource("CircleShape2D_6q0c6")
+
+[connection signal="body_entered" from="portal_area" to="." method="_on_portal_area_body_entered"]
+[connection signal="body_exited" from="portal_area" to="." method="_on_portal_area_body_exited"]
